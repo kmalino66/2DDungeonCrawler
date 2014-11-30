@@ -5,7 +5,6 @@ import java.util.Random;
 public class Weapon {
 
 	private String weaponName, damageRoll, weaponType;
-	private int weaponHealth, maxWeaponHealth;
 	
 	/**
 	 * Main constructor to create a new weapon.
@@ -19,8 +18,6 @@ public class Weapon {
 	{
 		this.weaponName = weaponName;
 		this.damageRoll = damageRoll;
-		this.weaponHealth = weaponHealth;
-		this.maxWeaponHealth = maxWeaponHealth;
 		this.weaponType = weaponType;
 	}
 	
@@ -49,5 +46,15 @@ public class Weapon {
 		}
 		
 		return damage + damageModifiers;
+	}
+	
+	public String getWeaponName()
+	{
+		return weaponName;
+	}
+	
+	public String getWeaponType()
+	{
+		return weaponType;
 	}
 }

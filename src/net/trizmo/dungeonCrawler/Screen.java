@@ -6,6 +6,7 @@ public class Screen extends JFrame {
 
 	
 	private static final long serialVersionUID = 1L;
+	public static MapHandler mapHandler;
 
 	public Screen(Frame frame) {
 	
