@@ -11,7 +11,6 @@ import java.util.Random;
 public class Player {
 
 	private String characterName, characterType;
-	@SuppressWarnings("unused")
 	private int health, maxHealth, strength, coordination, dextarity, wisdom, charisma, xp, level;
 	
 	//Records the different XP levels for the max xp until leveling up.
@@ -110,40 +109,5 @@ public class Player {
 	public boolean isAlive()
 	{
 		return alive;
-	}
-	
-	public String getCharacterName()
-	{
-		return characterName;
-	}
-	
-	public String getCharacterType()
-	{
-		return characterType;
-	}
-	
-	public int getLevel()
-	{
-		return level;
-	}
-	
-	/**
-	 * This will be called when the player is moved.  Deals with the methods that need to be called when this happens.
-	 * @param newXPos: The new X-position of the player.
-	 * @param newYPos: The new Y-position of the player.
-	 */
-	public void playerMoved(int newXPos, int newYPos)
-	{
-		if(Screen.mapHandler.map[newXPos][newYPos] == 2)
-		{
-			int side;
-			if(Screen.mapHandler.map[newXPos][newYPos - 1] == -1) side = 0;
-			if(Screen.mapHandler.map[newXPos + 1][newYPos] == -1) side = 1;
-			if(Screen.mapHandler.map[newXPos][newYPos + 1] == -1) side = 2;
-			if(Screen.mapHandler.map[newXPos - 1][newYPos] == -1) side = 3;
-			
-			
-			//TODO put roomGeneration method here.
-		}
 	}
 }
