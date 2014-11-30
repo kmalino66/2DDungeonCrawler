@@ -11,7 +11,6 @@ import java.util.Random;
 public class Player {
 
 	private String characterName, characterType;
-	@SuppressWarnings("unused")
 	private int health, maxHealth, strength, coordination, dextarity, wisdom, charisma, xp, level;
 	
 	//Records the different XP levels for the max xp until leveling up.
@@ -111,7 +110,7 @@ public class Player {
 	{
 		return alive;
 	}
-	
+
 	public String getCharacterName()
 	{
 		return characterName;

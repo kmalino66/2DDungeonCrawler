@@ -4,9 +4,9 @@ import javax.swing.JFrame;
 
 public class Screen extends JFrame {
 
+	public static MapHandler mapHandler;
 	
 	private static final long serialVersionUID = 1L;
-	public static MapHandler mapHandler;
 
 	public Screen(Frame frame) {
 	
