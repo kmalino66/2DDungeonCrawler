@@ -1,7 +1,18 @@
 package net.trizmo.dungeonCrawler;
 
+import java.awt.Point;
+import java.util.Random;
+
 public class RoomGenerator {
 
+	
+	/** Gets bounds that the a generated room must fit into.
+	 * 
+	 * @param x :X position of the start generation point.
+	 * @param y :Y position of the start generation point.
+	 * @param side :What side the startpoint is on in reletive to other rooms. 0=up 1=right 2=down 3=left.
+	 * @return The x and y bounds of the maximum room size. [upper, right, down, left].
+	 */
 	public static int[] getRoomBounds(int x, int y, int side)
 	{
 		int rightBound = -1, leftBound = -1, upperBound = -1, lowerBound = -1;
@@ -143,9 +154,79 @@ public class RoomGenerator {
 
 	}
 	
-	public void generateRoom(int x, int y, int side)
+	/**Generates a new room in the dungeon.
+	 * 
+	 * @param x :X position of the room generation is based off of.(door)
+	 * @param y :Y position of the room generation is based off of.(door)
+	 * @param side :Side the generation base in reletive of other rooms.
+	 */
+	public static void generateRoom(int x, int y, int side)
 	{
-		getRoomBounds(x, y, side);
+		int xPlus = 0, xMinus = 0, yPlus = 0, yMinus = 0;
+		Random rand = new Random();
+		
+		int[] bounds = getRoomBounds(x, y, side);
+		
+		if(bounds[1] - x > 0) xPlus = rand.nextInt(bounds[1] - x);
+		if(x - bounds[3] > 0) xMinus = rand.nextInt(x - bounds[3]);
+		if(y - bounds[0] > 0) yMinus = rand.nextInt(y - bounds[0]);
+		if(bounds[2] - y > 0) yPlus = rand.nextInt(bounds[2] - y);
+		
+		int xStart = x - xMinus, yStart = y - yMinus, width = xMinus + xPlus, height = yMinus + yPlus;
+		
+		for(int parX = 0; parX < width; parX++)
+		{
+			for(int parY = 0; parY < height; parY++)
+			{
+				if(parX == 0 || parY == 0 ||parX == width - 1 || parY == height - 1)
+				{
+					Screen.mapHandler.map[xStart + parX][yStart + parY] = 1;
+				}else {
+					Screen.mapHandler.map[xStart + parX][yStart + parY] = 0;
+				}
+			}
+		}
+		Screen.mapHandler.map[x][y] = 2;
+		doorPlacer(new Point(x, y), xStart, yStart, width, height);
+	}
+	
+	public static void doorPlacer(Point existingDoor, int roomX, int roomY, int roomWidth, int roomHeight)
+	{
+		Random rand = new Random();
+		boolean side0 = true, side1 = true, side2 = true, side3 = true;
+		
+		if(existingDoor.x == roomX) {
+			side3 = false;
+		}else if ( existingDoor.x == roomX + roomWidth)
+		{
+			side1 = false;
+		}else if(existingDoor.y == roomY)
+		{
+			side0 = false;
+		}else if(existingDoor.y == roomY + roomHeight)
+		{
+			side2 = false;
+		}
+		
+		if(side0)
+		{
+			if(rand.nextInt(100) <= 10) {
+				Screen.mapHandler.map[roomX + rand.nextInt(roomWidth)][roomY] = 2;
+			}
+		}
+		
+		if(side1 && rand.nextInt(100) <= 10)
+		{
+			Screen.mapHandler.map[roomX + roomWidth][roomY + rand.nextInt(roomHeight)] = 2;
+		}
+		if(side2 && rand.nextInt(100) <=10)
+		{
+			Screen.mapHandler.map[roomX + rand.nextInt(roomWidth)][roomY + roomWidth] = 2;
+		}
+		if(side3 && rand.nextInt(100) <=10)
+		{
+			Screen.mapHandler.map[roomX][roomY + rand.nextInt(roomHeight)] = 2;
+		}
 	}
 
 }

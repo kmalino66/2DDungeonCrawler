@@ -12,7 +12,7 @@ public class Player {
 
 	private String characterName, characterType;
 	@SuppressWarnings("unused")
-	private int health, maxHealth, strength, coordination, dextarity, wisdom, charisma, xp, level;
+	private int health, maxHealth, strength, coordination, dextarity, wisdom, charisma, xp, level, xPos, yPos;
 	
 	//Records the different XP levels for the max xp until leveling up.
 	public final static int[] levels = new int[] { 1000, 5000, 15000, 35000, 75000 };
@@ -24,7 +24,7 @@ public class Player {
 	 * @param characterName: Name of the character.
 	 * @param characterType: A string value of the characters type.
 	 */
-	public Player(String characterName, String characterType)
+	public Player(String characterName, String characterType, int xPos, int yPos)
 	{
 		Random rand = new Random();
 		this.characterName = characterName;
@@ -42,6 +42,8 @@ public class Player {
 		charisma = rand.nextInt(20);
 		alive = true;
 		health = maxHealth;
+		this.xPos = xPos;
+		this.yPos = yPos;
 	}
 	
 	/**
@@ -136,7 +138,7 @@ public class Player {
 	{
 		if(Screen.mapHandler.map[newXPos][newYPos] == 2)
 		{
-			int side;
+			int side = -1;
 			if(Screen.mapHandler.map[newXPos][newYPos - 1] == -1) side = 0;
 			if(Screen.mapHandler.map[newXPos + 1][newYPos] == -1) side = 1;
 			if(Screen.mapHandler.map[newXPos][newYPos + 1] == -1) side = 2;
@@ -144,6 +146,30 @@ public class Player {
 			
 			
 			//TODO put roomGeneration method here.
+			if(side != -1)
+			{
+				
+			}
 		}
 	}
+	
+	public void move(int direction)
+	{
+		switch(direction) {
+		case 0:
+			if(Screen.mapHandler.checkCoordValidPerson(xPos, yPos-1)) yPos--;
+			break;
+		case 1:
+			if(Screen.mapHandler.checkCoordValidPerson(xPos - 1, yPos)) xPos--;
+			break;
+		case 2:
+			if(Screen.mapHandler.checkCoordValidPerson(xPos, yPos + 1)) yPos++;
+			break;
+		case 3:
+			if(Screen.mapHandler.checkCoordValidPerson(xPos - 1, yPos)) xPos--;
+			break;
+		}
+	}
+	
+	
 }
