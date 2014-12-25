@@ -5,7 +5,6 @@ import java.util.Random;
 
 public class RoomGenerator {
 
-	
 	/** Gets bounds that the a generated room must fit into.
 	 * 
 	 * @param x :X position of the start generation point.
@@ -22,7 +21,7 @@ public class RoomGenerator {
 			//Find the upper bound.
 			for(int i = y - 1; i > 0; i--)
 			{
-				if(Screen.mapHandler.map[x][i] == 1 || Screen.mapHandler.map[x + 1][i] == 2)
+				if(Screen.mapHandler.map[x][i] == 1 || Screen.mapHandler.map[x][i] == 2)
 				{
 					if(upperBound == -1) upperBound = i;
 				}
@@ -31,7 +30,7 @@ public class RoomGenerator {
 			//Find the right bound.
 			for(int i = x + 1; i < Screen.mapHandler.map.length; i++)
 			{
-				if(Screen.mapHandler.map[i][y] == 1 || Screen.mapHandler.map[i + 1][y + 1] == 2)
+				if(Screen.mapHandler.map[i][y] == 1 || Screen.mapHandler.map[i][y] == 2)
 				{
 					if(rightBound == -1) rightBound = i;
 				}
@@ -63,7 +62,7 @@ public class RoomGenerator {
 			//Find the right bound.
 			for(int i = x + 1; i < Screen.mapHandler.map.length; i++)
 			{
-				if(Screen.mapHandler.map[i][y] == 1 || Screen.mapHandler.map[i + 1][y + 1] == 2)
+				if(Screen.mapHandler.map[i][y] == 1 || Screen.mapHandler.map[i][y] == 2)
 				{
 					if(rightBound == -1) rightBound = i;
 				}
@@ -89,7 +88,7 @@ public class RoomGenerator {
 			//Find the right bound.
 			for(int i = x+1; i < Screen.mapHandler.map.length; i++)
 			{
-				if(Screen.mapHandler.map[i][y] == 1 || Screen.mapHandler.map[i + 1][y + 1] == 2)
+				if(Screen.mapHandler.map[i][y] == 1 || Screen.mapHandler.map[i][y] == 2)
 				{
 					if(rightBound == -1) rightBound = i;
 				}
@@ -98,7 +97,7 @@ public class RoomGenerator {
 			//Find the lower bound.
 			for(int i = y + 1; i < Screen.mapHandler.map[0].length; i++)
 			{
-				if(Screen.mapHandler.map[x][i] == 1 || Screen.mapHandler.map[x + 1][i] == 2)
+				if(Screen.mapHandler.map[x][i] == 1 || Screen.mapHandler.map[x][i] == 2)
 				{
 					if(lowerBound == -1) lowerBound = i;
 				}
@@ -118,7 +117,7 @@ public class RoomGenerator {
 			//Find the upper bound.
 			for(int i = y - 1; i > 0; i--)
 			{
-				if(Screen.mapHandler.map[x][i] == 1 || Screen.mapHandler.map[x + 1][i] == 2)
+				if(Screen.mapHandler.map[x][i] == 1 || Screen.mapHandler.map[x][i] == 2)
 				{
 					if(upperBound == -1) upperBound = i;
 				}
@@ -173,6 +172,11 @@ public class RoomGenerator {
 		if(bounds[2] - y > 0) yPlus = rand.nextInt(bounds[2] - y);
 		
 		int xStart = x - xMinus, yStart = y - yMinus, width = xMinus + xPlus, height = yMinus + yPlus;
+		
+		if(xStart < 0) Screen.mapHandler.pushMap(1, xStart * -1);
+		if(yStart < 0) Screen.mapHandler.pushMap(2, yStart * -1);
+		if(xStart + width > Screen.mapHandler.map.length) Screen.mapHandler.extendMap(1, (xStart + width) - Screen.mapHandler.map.length);
+		if(yStart + height > Screen.mapHandler.map[0].length) Screen.mapHandler.extendMap(2, (yStart + height) - Screen.mapHandler.map[0].length);
 		
 		for(int parX = 0; parX < width; parX++)
 		{

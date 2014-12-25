@@ -153,22 +153,27 @@ public class Player {
 		}
 	}
 	
-	public void move(int direction)
+	public void move(int direction, int amount)
 	{
 		switch(direction) {
 		case 0:
-			if(Screen.mapHandler.checkCoordValidPerson(xPos, yPos-1)) yPos--;
+			if(Screen.mapHandler.checkCoordValidPerson(xPos, yPos - amount)) yPos--;
 			break;
 		case 1:
-			if(Screen.mapHandler.checkCoordValidPerson(xPos - 1, yPos)) xPos--;
+			if(Screen.mapHandler.checkCoordValidPerson(xPos + amount, yPos)) xPos--;
 			break;
 		case 2:
-			if(Screen.mapHandler.checkCoordValidPerson(xPos, yPos + 1)) yPos++;
+			if(Screen.mapHandler.checkCoordValidPerson(xPos, yPos + amount)) yPos++;
 			break;
 		case 3:
-			if(Screen.mapHandler.checkCoordValidPerson(xPos - 1, yPos)) xPos--;
+			if(Screen.mapHandler.checkCoordValidPerson(xPos - amount, yPos)) xPos--;
 			break;
 		}
+	}
+	
+	public void move(int direction)
+	{
+		move(direction, 1);
 	}
 	
 	

@@ -4,10 +4,21 @@ import javax.swing.ImageIcon;
 
 public class MapTile {
 	
-	public static final String[] textureName = new String[] {};
+	/**
+	 * 0=Floor
+	 * 1=Wall
+	 * 
+	 * 2=Door
+	 */
+	public static final String[] textureName = new String[] {"Floor", "DungeonWall", ""};
 	
 	public ImageIcon getTexture(int id)
 	{
-		return new ImageIcon("src/net/trizmo/dungeonCrawler/res/" + textureName + ".png");
+		if(new ImageIcon("src/net/trizmo/dungeonCrawler/res/" + textureName[id] + ".png").getImage() != null) {
+			return new ImageIcon("src/net/trizmo/dungeonCrawler/res/" + textureName[id] + ".png");
+		} else {
+			return new ImageIcon("src/net/trizmo/dungeonCrawler/res/" + textureName[id] + ".png");
+		}
+		
 	}
 }

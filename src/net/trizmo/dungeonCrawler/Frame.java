@@ -1,7 +1,6 @@
 package net.trizmo.dungeonCrawler;
 
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 /**
  * Main starter class.
@@ -14,11 +13,12 @@ public class Frame extends JFrame{
 
 	public static void main(String[] args)
 	{
-		SwingUtilities.invokeLater(new Runnable() {
+		/*SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				new Frame();
 			}
-		});
+		});*/
+		new Frame();
 	}
 	
 	public Frame() 
@@ -26,11 +26,12 @@ public class Frame extends JFrame{
 		new JFrame();
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+		this.setTitle("hi");
 		this.setLocation(0,0);
 		this.setUndecorated(true);
 		this.setResizable(false);
 		this.setVisible(true);
+		this.setExtendedState(MAXIMIZED_BOTH);
 
 		Screen screen = new Screen(this);
 		this.add(screen);
