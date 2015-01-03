@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 
@@ -65,6 +67,12 @@ public class MenuButton {
 	{
 		if(visible) visible = false;
 		if(!visible) visible = true;
+	}
+	
+	public boolean checkClicked(MouseEvent e)
+	{
+		Rectangle rect = new Rectangle(x, y, width, height);
+		return rect.contains(e.getPoint());
 	}
 
 }

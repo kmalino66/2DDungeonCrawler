@@ -1,7 +1,9 @@
-package net.trizmo.dungeonCrawler;
+package net.trizmo.dungeonCrawler.map;
 
 import java.awt.Point;
 import java.util.Random;
+
+import net.trizmo.dungeonCrawler.Screen;
 
 public class RoomGenerator {
 

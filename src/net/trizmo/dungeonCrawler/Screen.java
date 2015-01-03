@@ -5,7 +5,9 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import net.trizmo.dungeonCrawler.graphics.GraphicsManager;
 import net.trizmo.dungeonCrawler.graphics.MenuButton;
+import net.trizmo.dungeonCrawler.map.MapHandler;
 
 public class Screen extends JPanel implements Runnable{
 
@@ -22,13 +24,14 @@ public class Screen extends JPanel implements Runnable{
 	public static Graphics graph;
 
 	Thread thread = new Thread(this);
-	public static  Frame frame;
-	boolean running = true;
+	public static Frame frame;
+	public static boolean running = true;
 
 	public Screen(Frame frame) {
 
-		this.frame = frame; 
-
+		Screen.frame = frame; 
+		Screen.frame.addMouseListener(new MouseHandler(this));
+		
 		width = frame.getWidth();
 		height = frame.getHeight();
 

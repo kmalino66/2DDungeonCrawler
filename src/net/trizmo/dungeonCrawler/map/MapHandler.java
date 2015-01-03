@@ -1,4 +1,6 @@
-package net.trizmo.dungeonCrawler;
+package net.trizmo.dungeonCrawler.map;
+
+import net.trizmo.dungeonCrawler.Screen;
 
 public class MapHandler {
 	

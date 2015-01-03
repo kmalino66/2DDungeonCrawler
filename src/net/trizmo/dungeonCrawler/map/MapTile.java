@@ -1,4 +1,4 @@
-package net.trizmo.dungeonCrawler;
+package net.trizmo.dungeonCrawler.map;
 
 import javax.swing.ImageIcon;
 
