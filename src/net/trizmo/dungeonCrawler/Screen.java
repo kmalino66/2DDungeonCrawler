@@ -16,7 +16,7 @@ public class Screen extends JPanel implements Runnable{
 	private static final long serialVersionUID = 1L;
 
 	public static int width, height, boxSize;
-	public int scene = 0; // Scene values : 0 = Main SCreen, 100 = playing screen.
+	public int scene = 100; // Scene values : 0 = Main SCreen, 100 = playing screen.
 	public static Player player = null;
 	public static Font standardFont;
 
@@ -69,11 +69,15 @@ public class Screen extends JPanel implements Runnable{
 
 			repaint();
 		}
+		
+		FileManager.saveGame();
+		System.exit(0);
 	}
 
 	public void startProgram()
 	{
 		GraphicsManager.sceneChanged(-1, 0);
+		
 	}
 
 	public void changeScene(int newScene)

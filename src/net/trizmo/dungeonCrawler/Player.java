@@ -189,6 +189,11 @@ public class Player {
 	{
 		move(direction, 1);
 	}
+	
+	public String[] getAllPlayerInformation()
+	{
+		return new String[] {characterName, characterType, health + "", maxHealth + "", strength + "", coordination + "", dextarity + "", wisdom + "", charisma + "", xp + "", level + "", xPos + "", yPos + ""};
+	}
 
 
 }
