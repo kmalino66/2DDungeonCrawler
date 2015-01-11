@@ -101,7 +101,8 @@ public class FileManager {
 				}
 			}
 
-
+			printer.close();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

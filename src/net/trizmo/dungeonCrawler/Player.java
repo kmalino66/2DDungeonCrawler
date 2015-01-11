@@ -194,6 +194,16 @@ public class Player {
 	{
 		return new String[] {characterName, characterType, health + "", maxHealth + "", strength + "", coordination + "", dextarity + "", wisdom + "", charisma + "", xp + "", level + "", xPos + "", yPos + ""};
 	}
+	
+	public int getX()
+	{
+		return xPos;
+	}
+	
+	public int getY()
+	{
+		return yPos;
+	}
 
 
 }

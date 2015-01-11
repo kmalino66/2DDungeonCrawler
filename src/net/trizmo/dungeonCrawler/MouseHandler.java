@@ -18,7 +18,7 @@ public class MouseHandler implements MouseInputListener{
 		{
 			if(Screen.menuButtons[0].checkClicked(arg0))
 			{
-				//TODO Screen.createNewGame();
+				// TODO Screen.createNewGame();
 			}
 			if(Screen.menuButtons[1].checkClicked(arg0))
 			{

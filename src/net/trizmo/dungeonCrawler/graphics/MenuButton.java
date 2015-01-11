@@ -50,13 +50,12 @@ public class MenuButton {
 				g.setFont(font);
 				fm = g.getFontMetrics();
 			}
-			MessageHandler.resourceCreated("d");
 			ImageIcon textureImage = new ImageIcon("src/net/trizmo/dungeonCrawler/res/" + textureName + ".png");
 			g.setFont(idealFont);
 			g.setColor(textColor);
 			fm = g.getFontMetrics();
 			g.drawImage(textureImage.getImage(), x, y, width, height, null);
-			g.drawString(text, (int) ((x + (width / 2)) - fm.stringWidth(text) / 2), (y + (height)) - fm.getHeight() / 2);
+			g.drawString(text, (int) ((x + (width / 2)) - fm.stringWidth(text) / 2), (y + (height / 2)) + (fm.getMaxAscent()/ 2));
 
 			g.setFont(Screen.standardFont);
 			g.setColor(Color.BLACK);

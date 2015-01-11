@@ -16,7 +16,8 @@ public class Screen extends JPanel implements Runnable{
 	private static final long serialVersionUID = 1L;
 
 	public static int width, height, boxSize;
-	public int scene = 100; // Scene values : 0 = Main SCreen, 100 = playing screen.
+	public static int[] screenPosBounds;
+	public int scene = 0; // Scene values : 0 = Main SCreen, 100 = playing screen.
 	public static Player player = null;
 	public static Font standardFont;
 
@@ -41,6 +42,9 @@ public class Screen extends JPanel implements Runnable{
 		}else {
 			boxSize = height / 20;
 		}
+		
+		screenPosBounds = new int[]{ (int)((width) / boxSize) + 2, (int)((height) / boxSize) + 2};
+		
 		graph = this.getGraphics();
 		thread.start();
 	}
